@@ -20,12 +20,12 @@ calculateBtn.addEventListener('click', () => {
   } else {
     return;
   }
-  
+
   const birthDate = new Date(birthday);
   const currentDate = new Date();
-  
+
   console.log(birthDate.getTime());
-   
+
   const timeDiff = currentDate.getTime() - birthDate.getTime();
 
   // Age Calculation
@@ -36,8 +36,8 @@ calculateBtn.addEventListener('click', () => {
   const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 
   // Display Values
- 
-  
+
+
   if (months < 0) {
     years = years - 1;
     months = months + 12;
@@ -53,6 +53,13 @@ calculateBtn.addEventListener('click', () => {
   yearOut.innerText = years;
   document.getElementById('hourOut').innerText = hours;
   document.getElementById('minuteOut').innerText = minutes;
+});
+
+// Trigger calculation when pressing Enter
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    calculateBtn.click(); // simulates button click
+  }
 });
 
 // Get Number of Days in a particular months
@@ -151,3 +158,22 @@ function showMessage(elem, msg, border) {
   elem.style.border = border;
   elem.nextElementSibling.innerText = msg;
 }
+
+/*================ Theme switching =========================*/
+
+// Theme switching
+const themeButtons = document.querySelectorAll(".theme-btn");
+themeButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const theme = btn.dataset.theme;
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  });
+});
+
+// Load saved theme
+const saved = localStorage.getItem("theme");
+if (saved) {
+  document.documentElement.setAttribute("data-theme", saved);
+}
+

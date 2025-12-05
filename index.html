@@ -12,52 +12,57 @@
 <body>
 
   <main class="container" role="main">
+    <h1 class="title">Age calculator</h1>
     <div class="content">
-  
+
       <div class="input">
 
         <div>
-          <h6>Day</h6>
+          <h4>Day</h4>
           <input type="text" placeholder="DD" id="dayIn">
           <p class="error"></p>
         </div>
-    
+
         <div>
-          <h6>Month</h6>
+          <h4>Month</h4>
           <input type="text" placeholder="MM" id="monthIn">
           <p class="error"></p>
         </div>
-     
+
         <div>
-          <h6>Year</h6>
+          <h4>Year</h4>
           <input type="text" placeholder="YYYY" id="yearIn">
           <p class="error"></p>
         </div>
       </div>
-    
+
       <hr>
       <button id="calculateBtn">
         <img src="./assets/icon-arrow.svg" alt="">
       </button>
 
-   
       <div class="result">
-        <h1><span id="yearOut">--</span> years</h1>
-        <h1><span id="monthOut">--</span> months</h1>
-        <h1><span id="dayOut">--</span> days</h1>
-        <h1><span id="hourOut">--</span> hours</h1>
-        <h1><span id="minuteOut">--</span> minutes</h1>
+        <h2><span id="yearOut">--</span> years</h2>
+        <h2><span id="monthOut">--</span> months</h2>
+        <h2><span id="dayOut">--</span> days</h2>
+        <h2><span id="hourOut">--</span> hours</h2>
+        <h2><span id="minuteOut">--</span> minutes</h2>
 
       </div>
     </div>
+
+    <div class="change-theme">
+      Change theme:
+      <div class="themes">
+        <button data-theme="green" class="theme-btn green"></button>
+        <button data-theme="blue" class="theme-btn blue"></button>
+        <button data-theme="purple" class="theme-btn purple"></button>
+        <button data-theme="orange" class="theme-btn orange"></button>
+        <button data-theme="dark" class="theme-btn dark"></button>
+      </div>
+    </div>
+
   </main>
-
-
-  <footer class="attribution" role="contentinfo">
-
-    Coded by <a href="https://github.com/developerrahulofficial">Rahul Sahni</a>.
-  </footer>
-
 
   <script src="./main.js"></script>
 </body>

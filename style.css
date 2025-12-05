@@ -92,7 +92,7 @@ body {
 .content {
   background: var(--Card);
   width: 750px;
-  padding: 50px;
+  padding: 20px;
   border-radius: 20px;
   border-bottom-right-radius: 40%;
   position: relative;
@@ -113,7 +113,7 @@ body {
 .themes {
   display: flex;
   gap: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 4px;
   justify-content: center;
 }
 

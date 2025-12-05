@@ -49,8 +49,8 @@
 :root[data-theme="dark"] {
   --Primary: #1a1a1a;
   --Accent: #90905a;
-  --Bg: #1a1a1a;
-  --Card: #2a2a2a;
+  --Bg: #2e2e2e;
+  --Card: #626161;
   --Text: #f1f1f1;
 }
 
@@ -101,11 +101,12 @@ body {
 
 /* THEME SELECTOR */
 
-.change-theme{
+.change-theme {
   text-align: center;
   position: absolute;
   bottom: 0;
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 5px;
   font-size: 14px;
   color: var(--Accent);
 }
@@ -198,7 +199,7 @@ hr {
   border: none;
   background: var(--Primary);
   right: 50px;
-  top: 140px;
+  top: 120px;
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

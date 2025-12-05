@@ -10,50 +10,46 @@ const errorStyle = '0.5px solid var(--Light-red)';
 
 // Calculate Button
 calculateBtn.addEventListener('click', () => {
-  const D = dayIn.value;
-  const M = monthIn.value;
-  const Y = yearIn.value;
-  const birthday = `${Y}-${M}-${D}`;
+  const D = parseInt(dayIn.value);
+  const M = parseInt(monthIn.value);
+  const Y = parseInt(yearIn.value);
 
-  if (validateDay() && validateMonth() && validateYear()) {
-    console.log('Done');
-  } else {
-    return;
-  }
+  if (!(validateDay() && validateMonth() && validateYear())) return;
 
-  const birthDate = new Date(birthday);
+  // SAFE DATE CREATION
+  const birthDate = new Date(Y, M - 1, D);
   const currentDate = new Date();
 
-  console.log(birthDate.getTime());
+  const timeDiff = currentDate - birthDate;
 
-  const timeDiff = currentDate.getTime() - birthDate.getTime();
+  // Years, months, days
+  let years = currentDate.getFullYear() - birthDate.getFullYear();
+  let months = currentDate.getMonth() - birthDate.getMonth();
+  let days = currentDate.getDate() - birthDate.getDate();
 
-  // Age Calculation
-  let years = new Date().getFullYear() - new Date(birthday).getFullYear();
-  let months = new Date().getMonth() - new Date(birthday).getMonth();
-  let days = new Date().getDate() - Number(D);
+  // Adjust month & day
+  if (days < 0) {
+    months--;
+    days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  // Hours & minutes
   const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 
-  // Display Values
-
-
-  if (months < 0) {
-    years = years - 1;
-    months = months + 12;
-  }
-
-  if (days < 0) {
-    days += getNoOfDays(Y, M - 1);
-  }
-
-  // Display Values
-  dayOut.innerText = days;
-  monthOut.innerText = months;
+  // Display values
   yearOut.innerText = years;
+  monthOut.innerText = months;
+  dayOut.innerText = days;
   document.getElementById('hourOut').innerText = hours;
   document.getElementById('minuteOut').innerText = minutes;
 });
+
 
 // Trigger calculation when pressing Enter
 document.addEventListener('keydown', function (e) {
@@ -146,7 +142,7 @@ function validMonth(m) {
 // Validate Year
 function validYear(y, m, d) {
   const secondDate = new Date();
-  const firstDate = new Date(`${y}-${m}-${d}`);
+  const firstDate = new Date(y, m - 1, d);
   if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
     return true;
   }
